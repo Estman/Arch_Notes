@@ -18,4 +18,6 @@ sudo nano /etc/fstab
 
 hit Ctrl+o, Enter, Ctrl+x to save and quit
 
-4. Done!! reboot and test if it works =)
+4. Done!! reboot and test if it works.
+
+NOTE: If dualbooting disable or Fast Startup in Windows.
