@@ -1,0 +1,20 @@
+Activating Numlock on Bootup
+
+Install the package systemd-numlockontty from the AUR.
+
+OpenBox
+In the file ~/.config/openbox/autostart add the line:
+numlockx &
+And then save the file.
+
+Alternatively, if you do not want to install an aur package to implement this, you can simply create a service file in /etc/systemd/system like:
+[Unit]
+Description=Switch on numlock from tty1 to tty6
+
+[Service]
+ExecStart=/bin/bash -c 'for tty in /dev/tty{1..6};do /usr/bin/setleds -D +num < \"$tty\";done'
+
+[Install]
+WantedBy=multi-user.target
+Note: The filename should have a .service suffix, e.g. numlock1to6.service.
+Do not forget to enable the service after you create it.
