@@ -1,0 +1,37 @@
+How To Move 'var' to Another Partition
+
+partition and format
+boot from live disk/usb
+
+mkdir /mnt/root
+mount /dev/sda1 /mnt/root
+mkdir /mnt/newvar
+mount /dev/sdb1 /mnt/newvar
+cd /mnt/root/var
+cp -R * /mnt/newvar
+cp /mnt/root/etc/fstab /mnt/root/etc/fstab.orig
+EDIT fstab, ex:
+/dev/sdb1 /var ext4 defaults 0 0
+cd
+mv /mnt/root/var /mnt/root/var_old
+mkdir /mnt/root/var
+
+umount /mnt/root
+umount /mnt/var
+
+reboot
+
+* Suggestion. Install & configure anything-sync-daemon for Arch Linux (in the AUR)
+
+sudo mkdir /etc/systemd/system/asd-resync.timer.d/
+sudo leafpad /etc/systemd/system/asd-resync.timer.d/frequency.conf
+###########################################################
+[Unit]
+Description=Timer for Arofile-sync-daemon - 10min
+
+[Timer]
+# Empty value resets the list of timers
+OnUnitActiveSec=
+OnUnitActiveSec=10min
+###########################################################
+** more info https://wiki.archlinux.org/index.php/Anything-sync-daemon
