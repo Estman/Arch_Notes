@@ -1,0 +1,9 @@
+How to Use Systemd Timers
+
+Running a Single Script
+
+Let’s say you have a script /usr/local/bin/myscript that you want to run every hour.
+Don't forget to chmod +x to script.
+
+
+
