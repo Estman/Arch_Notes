@@ -1,0 +1,7 @@
+To fix time in Arch:
+
+Install the ntp package. 
+
+systemctl enable ntpd.service
+
+reboot
