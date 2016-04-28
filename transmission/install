@@ -1,0 +1,16 @@
+install
+sudo pacman -S transmission-cli
+web client http://localhost:9091
+
+copy transmission-daemon folder to /home/david/.config/transmission-daemon/
+copy transmission_notification.sh to /home/david/.scripts/transmission_notification.sh
+
+
+bashrc
+#transmissin
+alias tstart='transmission-daemon'
+alias tstop='transmission-remote --exit'
+alias treload='sudo service transmission-daemon reload'
+alias tlist='transmission-remote -n 'transmission:transmission' -l'
+alias tbasicstats='transmission-remote -n 'transmission:transmission' -st'
+alias tfullstats='transmission-remote -n 'transmission:transmission' -si'
