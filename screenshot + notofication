@@ -1,0 +1,14 @@
+take screenshot + notofication
+
+sudo pacman scrot
+
+
+mk file in ~/.scripts/scrpt.sh
+
+#!/bin/sh
+scrot -cd 5 /media/movies/Movies/watch/%Y-%m-%d-%T-screenshot.png
+notify-send "Screenshot saved." -i xfce4-notifyd
+
+chmod +x
+
+bindkey
