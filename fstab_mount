@@ -20,4 +20,13 @@ hit Ctrl+o, Enter, Ctrl+x to save and quit
 
 4. Done!! reboot and test if it works.
 
-NOTE: If dualbooting disable or Fast Startup in Windows.
+NOTE: If dualbooting disable Fast Startup and Hibernation in Windows.
+ 
+cmd Run as administrator
+powercfg /h off
+How to get it back ?
+powercfg /h on
+How to know if it is disabled ?
+go to ‘Control Panel’ -> ‘Hardware and Sound’ -> ‘Power Options’ -> ‘Change what power buttons do’, options page.
+
+In this page, under the ‘Shutdown settings’ section at the bottom, you will only see two options listed (‘Sleep’ & ‘Lock’), where previously it had two more options called: ‘Turn on fast start-up (recommended)’ and ‘Hibernate’.
