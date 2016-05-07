@@ -1,0 +1,8 @@
+
+#!/bin/sh
+scrot -cd 5 /mnt/2TB/Movies/watch/%Y-%m-%d-%T-screenshot.png
+notify-send "Screenshot saved." -i xfce4-notifyd
+
+chmod +x 
+
+bind to PrtScr
