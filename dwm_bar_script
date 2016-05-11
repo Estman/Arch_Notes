@@ -1,0 +1,47 @@
+#!/usr/local/bin/bash
+
+getWeather() {
+        wthr="$(cat ~/.weather)"
+        echo -ne "\x07>>\x01 $wthr "
+}
+
+getWireless() {
+        wifi="$(ifconfig wlan0 | grep ssid | cut -f2 -d ' ')"
+        echo -ne "\x07>>\x01 Wifi: $wifi "
+}
+
+getBattery() {
+        bat="$(apm | grep "Remaining battery life:" | head -n1 | cut -d ':' -f2)"
+        charge=$(apm | grep on-line | wc -l)
+        if [ $charge -gt 0 ]; then
+                echo -ne "\x07>>\x01 Bat:$bat (charging) "
+        else
+                echo -ne "\x07>>\x01 Bat:$bat "
+        fi
+}
+
+getMusic() {
+        count=$(mpc | wc -l)
+        if [ $count -gt 1 ]; then
+                msc="$(mpc | head -n1)"
+                echo -ne "\x07>>\x01$msc "
+        else
+                echo -ne "\x07>>\x01Not Playing "
+        fi
+}
+
+getVolume() {
+        vol="$(mixer vol | cut -d ':' -f2)"
+        echo -ne "\x07>>\x01 Vol: $vol% "
+}
+
+getTime() {
+        tme="$(date -j +'%a %b %d at %H:%M')"
+        #echo -ne "\x0A${icons[6]}\x01 ${tme}"
+        echo -ne "\x07>> \x01$tme"
+}
+
+while true; do
+        xsetroot -name "$(getMusic)$(getWeather)$(getWireless)$(getVolume)$(getBattery)$(getTime)"
+        sleep 2
+done
