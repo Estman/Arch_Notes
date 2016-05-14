@@ -1,0 +1,10 @@
+https://github.com/StevenBlack/hosts
+
+
+On windows 
+Go to https://github.com/StevenBlack/hosts
+Open hosts file, copy
+run terminal as admin
+notepad C:\Windows\System32\drivers\etc\hosts
+paste, save.
+In terminal ipconfig /flushdns or reboot.
