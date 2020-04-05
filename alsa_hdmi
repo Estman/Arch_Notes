@@ -1,0 +1,11 @@
+If using hdmi 
+First run aplay -l 
+Second run speaker-test -D plughw:0,8 -c 2   #where 0 is card and 8 is device
+If you have sound create file in ~/.asoundrc
+
+defaults.pcm.!card 0
+defaults.pcm.!device 8
+defaults.pcm.card 0
+defaults.ctl.card 0
+
+ 
